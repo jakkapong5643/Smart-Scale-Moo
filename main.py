@@ -11,13 +11,13 @@ import os
 
 app = FastAPI()
 
-model_path = r"C:\Users\jakka\Downloads\Cattle side view and back view dataset\Cattle side view and back view dataset\Cattle side and back view images\Web\modelXGBoost.pkl"
+model_path = "modelXGBoost.pkl"
 if os.path.exists(model_path):
     ml_model = joblib.load(model_path)
 else:
     raise FileNotFoundError(f"❌ Model file '{model_path}' not found!")
 
-model_path_forDL = r"C:\Users\jakka\Downloads\Cattle side view and back view dataset\Cattle side view and back view dataset\Cattle side and back view images\Web\modelXGBoost_forDL.pkl"
+model_path_forDL = "modelXGBoost_forDL.pkl"
 if os.path.exists(model_path_forDL):
     ml_model_for_DL = joblib.load(model_path_forDL)
 else:
