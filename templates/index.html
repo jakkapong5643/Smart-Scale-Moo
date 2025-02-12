@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Prediction</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h2>Predict Cattle Weight</h2>
+    <form action="/predict" method="post">
+        <label>Oblique Body Length (cm):</label>
+        <input type="number" step="0.01" name="oblique_length" required>
+        <label>Withers Height (cm):</label>
+        <input type="number" step="0.01" name="withers_height" required>
+        <label>Heart Girth (cm):</label>
+        <input type="number" step="0.01" name="heart_girth" required>
+        <label>Hip Length (cm):</label>
+        <input type="number" step="0.01" name="hip_length" required>
+        <button type="submit">Predict</button>
+    </form>
+    <a href="/upload">Upload Image</a>
+</body>
+</html>
