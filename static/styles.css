@@ -175,6 +175,6 @@ button:hover {
 #uploadedImage {
     width: 800px;
     height: 600px;
-    object-fit: contain;  /* ให้รูปภาพคงสัดส่วนไม่ยืดหรือลดขนาดผิด */
+    object-fit: contain;
     margin-top: 20px;
 }
