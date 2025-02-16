@@ -171,3 +171,10 @@ button:hover {
     margin-top: 10px;
     text-transform: uppercase;
 }
+
+#uploadedImage {
+    width: 800px;
+    height: 600px;
+    object-fit: contain;  /* ให้รูปภาพคงสัดส่วนไม่ยืดหรือลดขนาดผิด */
+    margin-top: 20px;
+}
