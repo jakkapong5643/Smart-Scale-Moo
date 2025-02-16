@@ -6,8 +6,9 @@ import cv2 as cv
 import numpy as np
 import joblib
 from ultralytics import YOLO
-from pathlib import Path
+import io
 import os
+import base64
 
 app = FastAPI()
 
@@ -53,23 +54,14 @@ async def predict(
     except Exception as e:
         return JSONResponse(content={"error": str(e)}, status_code=500)
 
-@app.get("/upload", response_class=HTMLResponse)
-async def upload_page(request: Request):
-    return templates.TemplateResponse("upload.html", {"request": request})
-
 @app.post("/upload")
 async def upload_image(file: UploadFile = File(...)):
     try:
-        # ตั้งชื่อ path สำหรับบันทึกรูปที่อัปโหลด
-        image_path = f"static/{file.filename}"
-        with open(image_path, "wb") as buffer:
-            buffer.write(file.file.read())
-
-        img = cv.imread(image_path)
+        image_data = await file.read()
+        img = cv.imdecode(np.frombuffer(image_data, np.uint8), cv.IMREAD_COLOR)
         if img is None:
             return JSONResponse(content={"error": "Invalid image format"}, status_code=400)
 
-        # ทำการแสดงผลผลการพยากรณ์
         results = yolo_model.predict(img)
         for r in results:
             for c in r:
@@ -94,12 +86,11 @@ async def upload_image(file: UploadFile = File(...)):
         X_test = np.array([[width_cm, height_cm]])
         y_pred = ml_model_for_DL.predict(X_test).tolist()
 
-        # ส่งข้อมูลไปยัง client พร้อมกับ URL ของภาพที่อัปโหลด
         return JSONResponse(content={
             "width_cm": width_cm,
             "height_cm": height_cm,
             "prediction": y_pred,
-            "image_url": f"/static/{file.filename}"  # เพิ่ม URL ของภาพ
+            "image_url": f"data:image/jpeg;base64,{base64.b64encode(image_data).decode()}"
         })
 
     except Exception as e:
