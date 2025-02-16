@@ -52,6 +52,8 @@
         <div id="uploadResult" style="display: none;">
             <h3>Prediction Result</h3>
             <p id="uploadMessage"></p>
+            <h3>Uploaded Image</h3>
+            <img id="uploadedImage" src="" alt="Uploaded Image" style="max-width: 100%; height: auto; margin-top: 20px;">
         </div>
     </div>
 
@@ -92,8 +94,11 @@
             .then(data => {
                 const resultDiv = document.getElementById("uploadResult");
                 const uploadMessage = document.getElementById("uploadMessage");
+                const uploadedImage = document.getElementById("uploadedImage");
+                
                 resultDiv.style.display = "block";
                 uploadMessage.textContent = `Predicted Cattle Weight: ${data.prediction[0].toFixed(2)} KG`;
+                uploadedImage.src = data.image_url;  // Display uploaded image
             })
             .catch(error => {
                 console.error('Error:', error);
