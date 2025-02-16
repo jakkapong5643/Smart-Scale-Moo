@@ -52,13 +52,12 @@
         <div id="uploadResult" style="display: none;">
             <h3>Prediction Result</h3>
             <p id="uploadMessage"></p>
-            <h3>Uploaded Image</h3>
+            <!-- <h3>Uploaded Image</h3> -->
             <img id="uploadedImage" src="" alt="Uploaded Image" style="max-width: 100%; height: auto; margin-top: 20px;">
         </div>
     </div>
 
     <script>
-        // Handle prediction form submission
         document.getElementById("predictForm").addEventListener("submit", function(event) {
             event.preventDefault();
 
@@ -80,7 +79,6 @@
             });
         });
 
-        // Handle upload form submission
         document.getElementById("uploadForm").addEventListener("submit", function(event) {
             event.preventDefault();
 
@@ -97,15 +95,14 @@
                 const uploadedImage = document.getElementById("uploadedImage");
                 
                 resultDiv.style.display = "block";
-                uploadMessage.textContent = `Predicted Cattle Weight: ${data.prediction[0].toFixed(2)} KG`;
-                uploadedImage.src = data.image_url;  // Display uploaded image
+                uploadMessage.textContent = `Cattle Weight: ${data.prediction[0].toFixed(2)} KG`;
+                uploadedImage.src = data.image_url;
             })
             .catch(error => {
                 console.error('Error:', error);
             });
         });
 
-        // Toggle between pages
         function showPage(page) {
             const pages = document.querySelectorAll('.page');
             pages.forEach(p => p.style.display = 'none');
