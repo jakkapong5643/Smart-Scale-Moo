@@ -8,3 +8,4 @@ pydantic==1.10.7
 jinja2==3.1.4
 catboost
 python-multipart
+aiofiles
