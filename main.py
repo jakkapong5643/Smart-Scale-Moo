@@ -11,7 +11,7 @@ import os
 
 app = FastAPI()
 
-model_path = "modelXGBoost.pkl"
+model_path = "modelXGBoost_3F.pkl"
 if os.path.exists(model_path):
     ml_model = joblib.load(model_path)
 else:
@@ -43,11 +43,10 @@ async def read_root(request: Request):
 async def predict(
     oblique_length: float = Form(...),
     withers_height: float = Form(...),
-    heart_girth: float = Form(...),
-    hip_length: float = Form(...),
+    heart_girth: float = Form(...)
 ):
     try:
-        features = np.array([[oblique_length, withers_height, heart_girth, hip_length]])
+        features = np.array([[oblique_length, withers_height, heart_girth]])
 
         prediction = ml_model.predict(features).tolist()
         return JSONResponse(content={"prediction": prediction})
