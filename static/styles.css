@@ -1,7 +1,6 @@
-/* Body and general styling */
 body {
-    height: 100vh; /* ใช้ความสูงเต็มหน้าจอ */
-    overflow: hidden; /* ปิดการเลื่อน */
+    height: 100vh;
+    overflow: hidden;
     font-family: Arial, sans-serif;
     margin: 0;
     text-align: left;
@@ -11,19 +10,18 @@ body {
     flex-direction: column;
 }
 
-/* Slider styling */
 .nav-slider {
-    position: fixed; /* ใช้การจัดตำแหน่งแบบคงที่ */
-    top: 0; /* ตำแหน่งที่ด้านบนสุด */
+    position: fixed;
+    top: 0;
     left: 50%;
-    transform: translateX(-50%); /* จัดให้อยู่ตรงกลางแนวนอน */
+    transform: translateX(-50%);
     display: flex;
     justify-content: space-evenly;
     background: linear-gradient(135deg, #8D6E63, #6D4C41);
     padding: 15px;
     border-radius: 30px;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
-    z-index: 100; /* ทำให้ slider อยู่เหนือเนื้อหาด้านล่าง */
+    z-index: 100;
     transition: background 0.3s;
 }
 
@@ -40,39 +38,34 @@ body {
     transition: transform 0.3s, background-color 0.3s;
 }
 
-/* Button hover effect */
 .nav-slider button:hover {
     background-color: #6D4C41;
     transform: scale(1.1);
 }
 
-/* Active button style */
 .nav-slider button.active {
     background-color: #4E342E;
     color: #FFF8E1;
 }
 
-/* Page styling */
 .page {
-    flex-grow: 1; /* ให้เนื้อหาขยายเต็มพื้นที่ */
-    overflow-y: auto; /* เปิดการเลื่อนแนวตั้ง */
+    flex-grow: 1;
+    overflow-y: auto;
     padding: 20px;
 }
 
-/* General form styling */
 form {
     display: flex;
     flex-direction: column;
-    width: 500px; /* เพิ่มความกว้างของฟอร์ม */
+    width: 500px;
     margin: 40px 0;
-    padding: 30px; /* เพิ่มระยะห่างภายในฟอร์ม */
+    padding: 30px;
     background: #FFF8E1;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 15px;
     text-align: left;
 }
 
-/* Input and button styling */
 input, button {
     margin: 12px 0;
     padding: 14px;
@@ -94,7 +87,6 @@ button:hover {
     background-color: #6D4C41;
 }
 
-/* Focus effects for input fields */
 input:focus {
     outline: none;
     border-color: #8D6E63;
@@ -111,9 +103,8 @@ input[type="file"] {
     align-items: center;
 }
 
-/* Style for the image */
 .right-image {
-    width: 300px; /* Adjust width as needed */
+    width: 300px;
     height: auto;
     margin-left: 20px;
 }
@@ -121,20 +112,20 @@ input[type="file"] {
 h1 {
     font-size: 36px;
     font-weight: bold;
-    color: #5D4037; /* เปลี่ยนเป็นสีสีน้ำตาลเข้มให้มีความอ่อนโยน */
+    color: #5D4037;
     text-align: left;
     margin-top: 150px;
     margin-bottom: 30px;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* เพิ่มเงาให้ตัวอักษร */
-    transition: color 0.3s ease, transform 0.3s ease; /* เพิ่มการเปลี่ยนแปลงสีและขนาดเมื่อโฮเวอร์ */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 button:hover {
-    color: #D32F2F; /* เมื่อโฮเวอร์สีตัวอักษรจะเปลี่ยนเป็นสีแดง */
-    transform: scale(1.2); /* เมื่อโฮเวอร์ขยายขนาดตัวอักษรเล็กน้อย */
+    color: #D32F2F;
+    transform: scale(1.2);
 }
 
 @media (max-width: 768px) {
@@ -153,7 +144,7 @@ button:hover {
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 10px;  /* ลดค่าของ margin-top */
+    margin-top: 10px;
     text-align: center;
 }
 
@@ -162,21 +153,21 @@ button:hover {
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 10px;  /* ลดค่าของ margin-top */
+    margin-top: 10px;
     text-align: center;
 }
 
 #predictionResult h3, #uploadResult h3 {
     font-size: 24px;
     font-weight: bold;
-    color: #6D4C41; /* Dark brown color */
+    color: #6D4C41;
     margin-bottom: 15px;
 }
 
 #predictionResult p, #uploadResult p {
     font-size: 18px;
     font-weight: bold;
-    color: #4E342E; /* Slightly darker brown */
+    color: #4E342E;
     margin-top: 10px;
     text-transform: uppercase;
 }
