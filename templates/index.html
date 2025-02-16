@@ -72,7 +72,7 @@
                 const resultDiv = document.getElementById("predictionResult");
                 const predictionText = document.getElementById("prediction");
                 resultDiv.style.display = "block";
-                predictionText.textContent = `Predicted Cattle Weight: ${data.prediction[0].toFixed(2)} KG`;
+                predictionText.textContent = `Cattle Weight: ${data.prediction[0].toFixed(2)} KG`;
             })
             .catch(error => {
                 console.error('Error:', error);
