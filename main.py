@@ -60,6 +60,7 @@ async def upload_page(request: Request):
 @app.post("/upload")
 async def upload_image(file: UploadFile = File(...)):
     try:
+        # ตั้งชื่อ path สำหรับบันทึกรูปที่อัปโหลด
         image_path = f"static/{file.filename}"
         with open(image_path, "wb") as buffer:
             buffer.write(file.file.read())
@@ -68,8 +69,8 @@ async def upload_image(file: UploadFile = File(...)):
         if img is None:
             return JSONResponse(content={"error": "Invalid image format"}, status_code=400)
 
+        # ทำการแสดงผลผลการพยากรณ์
         results = yolo_model.predict(img)
-
         for r in results:
             for c in r:
                 mask = np.zeros(img.shape[:2], np.uint8)
@@ -93,7 +94,13 @@ async def upload_image(file: UploadFile = File(...)):
         X_test = np.array([[width_cm, height_cm]])
         y_pred = ml_model_for_DL.predict(X_test).tolist()
 
-        return JSONResponse(content={"width_cm": width_cm, "height_cm": height_cm, "prediction": y_pred})
+        # ส่งข้อมูลไปยัง client พร้อมกับ URL ของภาพที่อัปโหลด
+        return JSONResponse(content={
+            "width_cm": width_cm,
+            "height_cm": height_cm,
+            "prediction": y_pred,
+            "image_url": f"/static/{file.filename}"  # เพิ่ม URL ของภาพ
+        })
 
     except Exception as e:
         return JSONResponse(content={"error": str(e)}, status_code=500)
