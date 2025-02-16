@@ -6,7 +6,6 @@ import cv2 as cv
 import numpy as np
 import joblib
 from ultralytics import YOLO
-import io
 import os
 import base64
 
